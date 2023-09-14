@@ -1,12 +1,13 @@
 version: '3'
 
-services: 
+services:
   app:
     restart: always
-    image: express-clm-demo:latest
+    image: express-clm-demo-og
     build: .
     env_file: .env
     environment:
       HOST: 0.0.0.0
     ports:
       - "3112:3000"
+    container_name: code-level-metrics-og

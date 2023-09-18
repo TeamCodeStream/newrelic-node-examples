@@ -20,6 +20,10 @@ app.use(holdUp)
 
 const { PORT = '3000', HOST = 'localhost' } = process.env
 
+app.get('/anon', function (_req, res) {
+  res.send('anonymous mw handler')
+})
+
 app.listen(PORT, HOST, function () {
   const addr = this.address()
   const host = addr.family === 'IPv6' ? `[${addr.address}]` : addr.address
@@ -35,10 +39,6 @@ app.get('/named-mw', function namedMiddlweare(_req, res) {
 //   res.send(data)
 // })
 
-app.get('/anon', function (_req, res) {
-  res.send('anonymous mw handler')
-})
-
 app.get('/arrow', (_req, res) => {
   res.send('arrow fn mw handler')
 })
@@ -52,7 +52,7 @@ const handler = function (_req, res) {
 }
 
 // eslint-disable-next-line
-app.get('/chained', function mw1(_req, _res, next) { next() }, function(_req, _res, next) { next() }, (_req, _res, next) => { next() }, mw4, handler)
+app.get('/chained', function mw1(_req, _res, next) { next() }, function(_req, _res, next) { setTimeout(next, 123) }, (_req, _res, next) => { setTimeout(next, 234) }, mw4, handler)
 // The above is deliberately ugly and in one line, with named,
 // anonymous, and arrow functions all in one big mess.
 

@@ -9,8 +9,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@newrelic/native-metrics": "10.0.1",
     "express": "^4.18.2",
-    "newrelic": "^9.14.1"
+    "newrelic": "^11.1.0"
   },
   "devDependencies": {
     "@newrelic/eslint-config": "^0.3.0",

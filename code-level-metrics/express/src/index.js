@@ -20,10 +20,6 @@ app.use(holdUp)
 
 const { PORT = '3000', HOST = 'localhost' } = process.env
 
-app.get('/anon', function (_req, res) {
-  res.send('anonymous mw handler')
-})
-
 app.listen(PORT, HOST, function () {
   const addr = this.address()
   const host = addr.family === 'IPv6' ? `[${addr.address}]` : addr.address
@@ -38,6 +34,10 @@ app.get('/named-mw', function namedMiddlweare(_req, res) {
 //   const data = collectStreetAddresses()
 //   res.send(data)
 // })
+
+app.get('/anon', function (_req, res) {
+  res.send('anonymous mw handler')
+})
 
 app.get('/arrow', (_req, res) => {
   res.send('arrow fn mw handler')

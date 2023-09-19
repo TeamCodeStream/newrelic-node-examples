@@ -2,8 +2,8 @@
 echo "Starting request loop"
 
 while true; do
-#  curl --silent http://localhost:3000/named-mw
-#  sleep 1
+  curl --silent http://localhost:3000/named-mw
+  sleep 1
   curl --silent http://localhost:3000/anon
   sleep 1
   curl --silent http://localhost:3000/arrow
